@@ -1,0 +1,61 @@
+:host {
+  display: block;
+}
+
+.dialog-container {
+  padding: 20px;
+}
+
+.dialog-title {
+  margin: 0 0 16px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.dialog-content {
+  margin-bottom: 24px;
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  button {
+    min-width: 100px;
+    transition: all 0.2s ease;
+
+    &.cancel-button {
+      &:hover {
+        background-color: #f5f5f5;
+        color: #333;
+      }
+    }
+
+    &.confirm-button {
+      &:hover {
+        background-color: #1976d2;
+        color: white;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .mat-mdc-dialog-container {
+    .mat-mdc-dialog-surface {
+      border-radius: 8px;
+    }
+  }
+
+  .mat-mdc-dialog-title {
+    margin: 0;
+    padding: 24px 24px 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}

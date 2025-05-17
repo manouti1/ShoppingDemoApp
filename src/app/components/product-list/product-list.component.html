@@ -1,0 +1,45 @@
+<div class="products-container">
+
+  <div *ngIf="loading" class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!loading" class="products-grid">
+    <mat-card *ngFor="let product of products" class="product-card" [routerLink]="['/products', product.id]">
+      <div class="product-image">
+        <img [src]="product.image" [alt]="product.title">
+      </div>
+
+      <mat-card-content>
+        <h3>{{ product.title }}</h3>
+        <p class="price">${{ product.price }}</p>
+        <p class="description">{{ product.description }}</p>
+        <div class="rating">
+          <mat-icon>star</mat-icon>
+          <span>{{ product.rating.rate }}</span>
+          <span class="reviews">({{ product.rating.count }} reviews)</span>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="addToCart(product); $event.stopPropagation()" [matTooltip]="'Add to cart'">
+          <mat-icon>shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+        <button mat-stroked-button color="primary" (click)="viewProductDetails(product)" [matTooltip]="'View details'">
+          <mat-icon>visibility</mat-icon>
+          View Details
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <mat-paginator
+    [length]="totalItems"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+    [matTooltip]="'Navigate through products'"
+  ></mat-paginator>
+</div>

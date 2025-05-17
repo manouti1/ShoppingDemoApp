@@ -1,0 +1,43 @@
+<div class="product-details-container" *ngIf="product">
+  <div class="back-button-container">
+    <button mat-stroked-button color="primary" routerLink="/products" [matTooltip]="'Back to products'">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Products
+    </button>
+  </div>
+
+  <div class="product-content">
+    <div class="product-image">
+      <img [src]="product.image" [alt]="product.title">
+    </div>
+
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <p class="price">${{ product.price }}</p>
+      <p class="description">{{ product.description }}</p>
+
+      <div class="quantity-controls">
+        <button mat-icon-button (click)="decreaseQuantity()" [disabled]="quantity <= 1" [matTooltip]="'Decrease quantity'">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <mat-form-field>
+          <input matInput type="number" [(ngModel)]="quantity" min="1" (change)="updateQuantity()">
+        </mat-form-field>
+        <button mat-icon-button (click)="increaseQuantity()" [matTooltip]="'Increase quantity'">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="addToCart()" [matTooltip]="'Add to cart'">
+          <mat-icon>shopping_cart</mat-icon>
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading-spinner" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>

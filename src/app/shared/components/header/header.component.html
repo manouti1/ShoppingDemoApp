@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span routerLink="/" style="cursor: pointer">Shopping Cart Demo</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/products">Products</button>
+  <button mat-button routerLink="/cart">
+    Cart
+    <mat-icon [matBadge]="cartItemCount" matBadgeColor="warn">shopping_cart</mat-icon>
+  </button>
+</mat-toolbar>
